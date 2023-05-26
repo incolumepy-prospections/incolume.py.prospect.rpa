@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "bot"
+name = "rpa"
 version = "0.1.0"
 description = ""
 authors = ["britodfbr <britodfbr@gmail.com>"]
