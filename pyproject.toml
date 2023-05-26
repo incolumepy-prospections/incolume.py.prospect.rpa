@@ -9,6 +9,7 @@ packages = [{include = "incolume"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pyautogui = "^0.9.54"
 
 
 [tool.poetry.group.doc.dependencies]
