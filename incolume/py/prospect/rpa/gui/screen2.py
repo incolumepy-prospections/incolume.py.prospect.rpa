@@ -16,18 +16,18 @@ def on_click(msg: str):
     print(msg)
 
 
-texto = ctk.CTkLabel(janela, text="Login")
-texto.pack(padx=10, pady=10)
+texto2 = ctk.CTkLabel(janela, text="Login")
+texto2.pack(padx=10, pady=10)
 
-login = ctk.CTkEntry(janela, placeholder_text="Digite teu Login")
-login.pack(padx=10, pady=10)
+login2 = ctk.CTkEntry(janela, placeholder_text="Digite teu Login")
+login2.pack(padx=10, pady=10)
 
-pwd = ctk.CTkEntry(janela, placeholder_text="Digite tua senha", show="*")
-pwd.pack(padx=10, pady=10)
+pwd2 = ctk.CTkEntry(janela, placeholder_text="Digite tua senha", show="*")
+pwd2.pack(padx=10, pady=10)
 
-button = ctk.CTkButton(
-    janela, text="Login", command=partial(on_click, f"{login=}{pwd=}")
+button2 = ctk.CTkButton(
+    janela, text="Login", command=partial(on_click, f"{login2=}{pwd2=}")
 )
-button.pack(padx=10, pady=10)
+button2.pack(padx=10, pady=10)
 
 janela.mainloop()

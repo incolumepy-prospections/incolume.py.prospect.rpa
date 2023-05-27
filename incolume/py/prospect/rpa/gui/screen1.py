@@ -15,10 +15,10 @@ def on_click(msg: str):
     print(msg)
 
 
-texto = tkinter.Label(janela, text="Login")
-texto.pack(padx=10, pady=10)
+texto1 = tkinter.Label(janela, text="Login")
+texto1.pack(padx=10, pady=10)
 
-button = tkinter.Button(janela, text="Login", command=partial(on_click, "ok"))
-button.pack(padx=10, pady=10)
+button1 = tkinter.Button(janela, text="Login", command=partial(on_click, "ok"))
+button1.pack(padx=10, pady=10)
 
 janela.mainloop()

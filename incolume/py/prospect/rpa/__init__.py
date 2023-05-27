@@ -11,11 +11,10 @@ versionfile = Path(__file__).parent.joinpath("version.txt")
 
 with configfile.open("rb") as file:
     versionfile.write_text(
-        f"{load(file)['tool']['poetry']['version']}\n",
-        encoding='utf-8'
+        f"{load(file)['tool']['poetry']['version']}\n", encoding="utf-8"
     )
 
-__version__ = versionfile.read_text(encoding='utf-8').strip()
+__version__ = versionfile.read_text(encoding="utf-8").strip()
 
 if __name__ == "__main__":
     logging.debug("%s, %s", configfile, versionfile)

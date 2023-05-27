@@ -10,6 +10,7 @@ __author__ = "@britodfbr"  # pragma: no cover
 
 class TestCase:
     """Test case class."""
+
     @pytest.mark.parametrize(
         "entrance",
         (
