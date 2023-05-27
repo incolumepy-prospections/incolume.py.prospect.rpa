@@ -1,37 +1,37 @@
 """Modelo de janela com CustomTKInter."""
 
-import customtkinter as ctk
 import logging
 from functools import partial
 
+import customtkinter as ctk
+
 __author__ = "@britodfbr"  # pragma: no cover
-ctk.set_appearance_mode('dark')
-ctk.set_default_color_theme('dark-blue')
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("dark-blue")
 janela = ctk.CTk()
-janela.title('Authentication')
+janela.title("Authentication")
 janela.geometry("500x300")
 
 
 def click():
-    values = '%s %s %s' % (login.get(), pwd.get(), checkbox.get())
+    values = "%s %s %s" % (login.get(), pwd.get(), checkbox.get())
     logging.debug(values)
     print(values)
 
 
-texto = ctk.CTkLabel(janela, text='Informações para Login')
+texto = ctk.CTkLabel(janela, text="Informações para Login")
 texto.pack(padx=10, pady=10)
 
-login = ctk.CTkEntry(janela, placeholder_text='Digite teu Login')
+login = ctk.CTkEntry(janela, placeholder_text="Digite teu Login")
 login.pack(padx=10, pady=10)
 
-pwd = ctk.CTkEntry(janela,
-                   placeholder_text='Digite tua senha', show='*')
+pwd = ctk.CTkEntry(janela, placeholder_text="Digite tua senha", show="*")
 pwd.pack(padx=10, pady=10)
 
-checkbox = ctk.CTkCheckBox(janela, text='...')
+checkbox = ctk.CTkCheckBox(janela, text="...")
 checkbox.pack(padx=10, pady=10)
 
-button = ctk.CTkButton(janela, text='Login', command=click)
+button = ctk.CTkButton(janela, text="Login", command=click)
 button.pack(padx=10, pady=10)
 
 janela.mainloop()

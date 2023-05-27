@@ -1,8 +1,8 @@
 """Principal Module."""
 import logging
 from pathlib import Path
-from tomli import load
 
+from tomli import load
 
 __author__ = "@britodfbr"
 

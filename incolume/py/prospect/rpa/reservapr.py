@@ -1,21 +1,23 @@
-import time
-import platform
-import pyautogui
 import logging
+import platform
+import time
 
+import pyautogui
 
-if 'win' not in platform.system().lower():
-    logging.error(' -- Only Windows --')
+if "win" not in platform.system().lower():
+    logging.error(" -- Only Windows --")
     raise SystemError("This run only Windows!")
 
 
-def automation1(url: str = '') -> None:
+def automation1(url: str = "") -> None:
     """Automação para agendamento de sala com pyautogui."""
-    url = url or r'https://intranetsispr2.presidencia.gov.br/' \
-                 r'reservapr/login.php'
+    url = (
+        url
+        or r"https://intranetsispr2.presidencia.gov.br/" r"reservapr/login.php"
+    )
     #
     pyautogui.alert("Pronto para iniciar a automação?")
-    pyautogui.PAUSE = .5
+    pyautogui.PAUSE = 0.5
 
     pyautogui.press("winleft")
     time.sleep(2)
@@ -23,11 +25,11 @@ def automation1(url: str = '') -> None:
     pyautogui.press("enter")
 
     pyautogui.hotkey("ctrl", "t")
-    time.sleep(.8)
+    time.sleep(0.8)
 
     pyautogui.write(url)
     pyautogui.press("enter")
-    pyautogui.confirm('Proceda com o login e pressione OK.')
+    pyautogui.confirm("Proceda com o login e pressione OK.")
 
 
 if __name__ == "__main__":  # pragma: no cover

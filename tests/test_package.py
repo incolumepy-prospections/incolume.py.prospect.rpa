@@ -2,12 +2,7 @@ import re
 
 import pytest
 
-from incolume.py.prospect.rpa import (
-    __version__,
-    configfile,
-    load,
-    versionfile,
-)
+from incolume.py.prospect.rpa import __version__, configfile, load, versionfile
 
 __author__ = "@britodfbr"  # pragma: no cover
 

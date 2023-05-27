@@ -1,6 +1,7 @@
 import asyncio
-from playwright.sync_api import sync_playwright
+
 from playwright.async_api import async_playwright
+from playwright.sync_api import sync_playwright
 
 
 def sketch01():
@@ -33,11 +34,13 @@ def sketch03():
         browser.close()
 
 
-def automation1(url: str = '') -> None:
+def automation1(url: str = "") -> None:
     """Automação para agendamento de sala com playwright."""
 
-    url = url or r'https://intranetsispr2.presidencia.gov.br/' \
-                 r'reservapr/login.php'
+    url = (
+        url
+        or r"https://intranetsispr2.presidencia.gov.br/" r"reservapr/login.php"
+    )
 
 
 def run():
@@ -45,8 +48,8 @@ def run():
     sketch01()
     asyncio.run(sketch02())
     sketch03()
-    print('{}'.format(dir()))
+    print("{}".format(dir()))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()

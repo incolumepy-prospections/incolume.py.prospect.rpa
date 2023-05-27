@@ -1,7 +1,7 @@
 """Modelo de janela com TKInter."""
 
-import tkinter
 import logging
+import tkinter
 from functools import partial
 
 __author__ = "@britodfbr"  # pragma: no cover
@@ -14,10 +14,10 @@ def click(msg: str):
     print(msg)
 
 
-texto = tkinter.Label(janela, text='Login')
+texto = tkinter.Label(janela, text="Login")
 texto.pack(padx=10, pady=10)
 
-button = tkinter.Button(janela, text='Login', command=partial(click, 'ok'))
+button = tkinter.Button(janela, text="Login", command=partial(click, "ok"))
 button.pack(padx=10, pady=10)
 
 janela.mainloop()
