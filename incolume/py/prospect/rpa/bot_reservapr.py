@@ -1,3 +1,5 @@
+"""Examples RPA with playwright."""
+
 import asyncio
 
 from playwright.async_api import async_playwright
@@ -5,9 +7,10 @@ from playwright.sync_api import sync_playwright
 
 
 def sketch01():
-    """"""
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
+    """Syncrono example."""
+
+    with sync_playwright() as pw_instance:
+        browser = pw_instance.chromium.launch()
         page = browser.new_page()
         page.goto("http://playwright.dev")
         print(page.title())
@@ -15,9 +18,10 @@ def sketch01():
 
 
 async def sketch02():
-    """"""
-    async with async_playwright() as p:
-        browser = await p.chromium.launch()
+    """Asyncrono example."""
+
+    async with async_playwright() as pw_instance:
+        browser = await pw_instance.chromium.launch()
         page = await browser.new_page()
         await page.goto("http://playwright.dev")
         print(await page.title())
@@ -25,9 +29,9 @@ async def sketch02():
 
 
 def sketch03():
-    """"""
-    with sync_playwright() as p:
-        browser = p.webkit.launch(headless=False, slow_mo=50)
+    """Screenshot example."""
+    with sync_playwright() as pw_instance:
+        browser = pw_instance.webkit.launch(headless=False, slow_mo=50)
         page = browser.new_page()
         page.goto("http://whatsmyuseragent.org/")
         page.screenshot(path="example.png")
@@ -48,7 +52,7 @@ def run():
     sketch01()
     asyncio.run(sketch02())
     sketch03()
-    print("{}".format(dir()))
+    print(f"{dir()}")
 
 
 if __name__ == "__main__":

@@ -12,8 +12,9 @@ janela = ctk.CTk()
 janela.geometry("500x300")
 
 
-def click(*args, **kwargs):
-    logging.debug("%s %s" % (args, kwargs))
+def on_click(*args, **kwargs):
+    """handler events."""
+    logging.debug("%s %s", args, kwargs)
     print(args, kwargs)
 
 
@@ -32,7 +33,7 @@ checkbox.pack(padx=10, pady=10)
 button = ctk.CTkButton(
     janela,
     text="Login",
-    command=partial(click, login.get(), pwd.get(), checkbox.get()),
+    command=partial(on_click, login.get(), pwd.get(), checkbox.get()),
 )
 button.pack(padx=10, pady=10)
 

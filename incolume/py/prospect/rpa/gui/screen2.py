@@ -10,7 +10,8 @@ janela = ctk.CTk()
 janela.geometry("500x300")
 
 
-def click(msg: str):
+def on_click(msg: str):
+    """Handler events."""
     logging.debug(msg)
     print(msg)
 
@@ -25,7 +26,7 @@ pwd = ctk.CTkEntry(janela, placeholder_text="Digite tua senha", show="*")
 pwd.pack(padx=10, pady=10)
 
 button = ctk.CTkButton(
-    janela, text="Login", command=partial(click, f"{login=}{pwd=}")
+    janela, text="Login", command=partial(on_click, f"{login=}{pwd=}")
 )
 button.pack(padx=10, pady=10)
 

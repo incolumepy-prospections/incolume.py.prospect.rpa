@@ -1,7 +1,6 @@
 """Modelo de janela com CustomTKInter."""
 
 import logging
-from functools import partial
 
 import customtkinter as ctk
 
@@ -13,8 +12,9 @@ janela.title("Authentication")
 janela.geometry("500x300")
 
 
-def click():
-    values = "%s %s %s" % (login.get(), pwd.get(), checkbox.get())
+def on_click():
+    """Handler events."""
+    values = f"{login.get()}, {pwd.get()}, {checkbox.get()}"
     logging.debug(values)
     print(values)
 
@@ -31,7 +31,7 @@ pwd.pack(padx=10, pady=10)
 checkbox = ctk.CTkCheckBox(janela, text="...")
 checkbox.pack(padx=10, pady=10)
 
-button = ctk.CTkButton(janela, text="Login", command=click)
+button = ctk.CTkButton(janela, text="Login", command=on_click)
 button.pack(padx=10, pady=10)
 
 janela.mainloop()

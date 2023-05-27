@@ -1,3 +1,5 @@
+"""Module RPA for Windows with pyautogui."""
+
 import logging
 import platform
 import time

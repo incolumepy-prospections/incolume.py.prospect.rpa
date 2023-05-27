@@ -9,7 +9,8 @@ janela = tkinter.Tk()
 janela.geometry("500x300")
 
 
-def click(msg: str):
+def on_click(msg: str):
+    """Handler events."""
     logging.debug(msg)
     print(msg)
 
@@ -17,7 +18,7 @@ def click(msg: str):
 texto = tkinter.Label(janela, text="Login")
 texto.pack(padx=10, pady=10)
 
-button = tkinter.Button(janela, text="Login", command=partial(click, "ok"))
+button = tkinter.Button(janela, text="Login", command=partial(on_click, "ok"))
 button.pack(padx=10, pady=10)
 
 janela.mainloop()

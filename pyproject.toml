@@ -59,8 +59,7 @@ no_shell = [
   "os.spawnve",
   "os.spawnvp",
   "os.spawnvpe",
-  "os.startfile"
-]
+  "os.startfile"]
 shell = [
   "os.system",
   "os.popen",
@@ -73,28 +72,23 @@ shell = [
   "popen2.Popen3",
   "popen2.Popen4",
   "commands.getoutput",
-  "commands.getstatusoutput"
-]
+  "commands.getstatusoutput"]
 subprocess = [
   "subprocess.Popen",
   "subprocess.call",
   "subprocess.check_call",
-  "subprocess.check_output"
-]
+  "subprocess.check_output"]
 
 [tool.pytest.ini_options]
 #log_format = '%(asctime)s %(levelname)s %(message)s'
 log_format = '%(asctime)s; %(levelname)-8s; %(name)s; %(module)s; %(funcName)s; %(message)s'
 log_date_format ='%FT%T%N%z'
 addopts = "--doctest-modules --cov=incolume -sx --cov-report term-missing --cov-report html:coverage_report/html --cov-report xml:coverage_report/cov.xml"
-testpaths = [
-  "tests",
-]
+testpaths = ["tests",]
 markers = [
   "slow: marks tests as slow (deselect with '-m \"not slow\"')",
   "webtest: marks tests as webtest (deselect with '-m \"not webtest\"')",
-  "fast: marks tests as fast (deselect with '-m \"not fast\"')",
-]
+  "fast: marks tests as fast (deselect with '-m \"not fast\"')",]
 
 [tool.coverage.html]
 directory = "coverage_report/html"
@@ -108,8 +102,7 @@ omit = [
   # omit everything in /usr
   "/usr/*",
   # omit this single file
-  "configure/truncus.py",
-]
+  "configure/truncus.py",]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -125,8 +118,7 @@ exclude_lines = [
   "def run",
   "def terminal.",
   "__author__",
-  "class IElements"
-]
+  "class IElements"]
 
 [tool.isort]
 profile = "black"
@@ -159,8 +151,7 @@ exclude = '''
   | blib2to3
   | tests/data
   | profiling
-)/
-'''
+)/ '''
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r .'}
