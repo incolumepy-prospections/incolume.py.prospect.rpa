@@ -12,9 +12,10 @@ janela.title('Authentication')
 janela.geometry("500x300")
 
 
-def click(*args, **kwargs):
-    logging.debug('%s %s' % (args, kwargs))
-    print(args, kwargs)
+def click():
+    values = '%s %s %s' % (login.get(), pwd.get(), checkbox.get())
+    logging.debug(values)
+    print(values)
 
 
 texto = ctk.CTkLabel(janela, text='Informações para Login')
@@ -30,16 +31,7 @@ pwd.pack(padx=10, pady=10)
 checkbox = ctk.CTkCheckBox(janela, text='...')
 checkbox.pack(padx=10, pady=10)
 
-button = ctk.CTkButton(
-    janela,
-    text='Login',
-    command=partial(
-        click,
-        login.get(),
-        pwd.get(),
-        checkbox.get()
-    )
-)
+button = ctk.CTkButton(janela, text='Login', command=click)
 button.pack(padx=10, pady=10)
 
 janela.mainloop()
