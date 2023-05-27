@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rpa"
-version = "0.1.0"
+version = "0.2.0a0"
 description = ""
 authors = ["britodfbr <britodfbr@gmail.com>"]
 readme = "README.md"
