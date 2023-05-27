@@ -11,6 +11,7 @@ packages = [{include = "incolume"}]
 python = "^3.10"
 pyautogui = "^0.9.54"
 playwright = "^1.33.0"
+customtkinter = "^5.1.3"
 
 
 [tool.poetry.group.doc.dependencies]
