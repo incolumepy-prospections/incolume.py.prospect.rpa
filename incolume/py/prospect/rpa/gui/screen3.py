@@ -13,7 +13,7 @@ janela.geometry("500x300")
 
 
 def on_click(*args, **kwargs):
-    """handler events."""
+    """Run handler events."""
     logging.debug("%s %s", args, kwargs)
     print(args, kwargs)
 

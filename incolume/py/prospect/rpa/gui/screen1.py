@@ -10,7 +10,7 @@ janela.geometry("500x300")
 
 
 def on_click(msg: str):
-    """Handler events."""
+    """Run handler events."""
     logging.debug(msg)
     print(msg)
 

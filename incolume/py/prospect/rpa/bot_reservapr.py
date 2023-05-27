@@ -8,7 +8,6 @@ from playwright.sync_api import sync_playwright
 
 def sketch01():
     """Syncrono example."""
-
     with sync_playwright() as pw_instance:
         browser = pw_instance.chromium.launch()
         page = browser.new_page()
@@ -19,7 +18,6 @@ def sketch01():
 
 async def sketch02():
     """Asyncrono example."""
-
     async with async_playwright() as pw_instance:
         browser = await pw_instance.chromium.launch()
         page = await browser.new_page()
@@ -40,7 +38,6 @@ def sketch03():
 
 def automation1(url: str = "") -> None:
     """Automação para agendamento de sala com playwright."""
-
     url = (
         url
         or r"https://intranetsispr2.presidencia.gov.br/" r"reservapr/login.php"
@@ -48,7 +45,7 @@ def automation1(url: str = "") -> None:
 
 
 def run():
-    """run it.."""
+    """Run it.."""
     sketch01()
     asyncio.run(sketch02())
     sketch03()

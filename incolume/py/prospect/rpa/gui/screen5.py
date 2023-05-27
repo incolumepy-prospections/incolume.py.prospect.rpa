@@ -13,7 +13,7 @@ janela.geometry("500x300")
 
 
 def on_click():
-    """Handler events."""
+    """Run handler events."""
     values = f"{login.get()}, {pwd.get()}, {checkbox.get()}"
     logging.debug(values)
     print(values)
