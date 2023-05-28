@@ -2,7 +2,7 @@
 
 import logging
 
-import customtkinter as ctk
+import customtkinter as ctk  # type: ignore
 
 __author__ = "@britodfbr"  # pragma: no cover
 ctk.set_appearance_mode("dark")

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "rpa"
+name = "incolume.py.prospect.rpa"
 version = "0.3.0"
 description = ""
 authors = ["britodfbr <britodfbr@gmail.com>"]
@@ -135,7 +135,7 @@ include = '\.pyi?$'
 exclude = '''
 # A regex preceded with ^/ will apply only to files and directories
 # in the root of the project.
-/(
+ /(
   ^/foo.py    # exclude a file named foo.py in the root of the project
   | \.git
   | \.hg
@@ -152,7 +152,8 @@ exclude = '''
   | blib2to3
   | tests/data
   | profiling
-)/ '''
+ )/
+ '''
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r .'}
