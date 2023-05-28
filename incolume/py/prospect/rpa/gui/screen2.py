@@ -3,7 +3,7 @@
 import logging
 from functools import partial
 
-import customtkinter as ctk
+import customtkinter as ctk  # type: ignore
 
 __author__ = "@britodfbr"  # pragma: no cover
 janela = ctk.CTk()
