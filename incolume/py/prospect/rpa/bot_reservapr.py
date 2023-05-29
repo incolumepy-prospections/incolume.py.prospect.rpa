@@ -2,10 +2,11 @@
 
 import asyncio
 import time
-
+import datetime as dt
 from playwright.async_api import async_playwright
 from playwright.sync_api import sync_playwright
 from incolume.py.prospect.rpa.gui.screen7 import screen7
+from incolume.py.prospect.rpa.gui.screen8 import screen8
 
 
 def sketch01():
@@ -59,13 +60,42 @@ def automation1(url: str = "") -> None:
         # browser.close()
 
 
+def automation2(date: dt.datetime = None,
+                date_format: str = '%d/%m/%Y', url: str = "") -> None:
+    """Automação para agendamento de sala com playwright."""
+    date = date or dt.datetime.now()
+    url = (
+        url
+        or r"https://intranetsispr2.presidencia.gov.br/reservapr/login.php"
+    )
+    info_login = screen8()
+    with sync_playwright() as pw_instance:
+        browser = pw_instance.webkit.launch(headless=False, slow_mo=50)
+        page = browser.new_page()
+        page.goto(url)
+        time.sleep(7)
+        page.screenshot(path="example.png")
+        page.fill('xpath=//*[@id="txt_login"]', info_login.get('username'))
+        page.fill('xpath=//*[@id="txt_senha"]', info_login.get('password'))
+        page.locator('xpath=//*[@id="form-signin"]/button').click()
+        page.locator('xpath=//*[@id="form-pesquisa-disponibilidade"]'
+                     '/div/div[3]/div/div[1]/div/label[2]/input').click()
+
+        time.sleep(1)
+        page.fill('xpath=//*[@id="txt_dat_inicio"]',
+                  date.strftime(date_format))
+        time.sleep(5)
+        # browser.close()
+
+
 def run():
     """Run it.."""
     # sketch01()
     # asyncio.run(sketch02())
     # sketch03()
     # print(f"{dir()}")
-    automation1(url="https://portalhashtag.com/login")
+    # automation1(url="https://portalhashtag.com/login")
+    automation2()
 
 
 if __name__ == "__main__":
