@@ -4,7 +4,9 @@ version = "0.4.0"
 description = ""
 authors = ["britodfbr <britodfbr@gmail.com>"]
 readme = "README.md"
-packages = [{include = "incolume"}]
+packages = [
+  {include = "incolume"}
+ ]
 
 
 [tool.poetry.dependencies]
@@ -60,7 +62,8 @@ no_shell = [
   "os.spawnve",
   "os.spawnvp",
   "os.spawnvpe",
-  "os.startfile"]
+  "os.startfile"
+ ]
 shell = [
   "os.system",
   "os.popen",
@@ -73,12 +76,14 @@ shell = [
   "popen2.Popen3",
   "popen2.Popen4",
   "commands.getoutput",
-  "commands.getstatusoutput"]
+  "commands.getstatusoutput"
+ ]
 subprocess = [
   "subprocess.Popen",
   "subprocess.call",
   "subprocess.check_call",
-  "subprocess.check_output"]
+  "subprocess.check_output"
+ ]
 
 [tool.pytest.ini_options]
 #log_format = '%(asctime)s %(levelname)s %(message)s'
@@ -89,7 +94,8 @@ testpaths = ["tests",]
 markers = [
   "slow: marks tests as slow (deselect with '-m \"not slow\"')",
   "webtest: marks tests as webtest (deselect with '-m \"not webtest\"')",
-  "fast: marks tests as fast (deselect with '-m \"not fast\"')",]
+  "fast: marks tests as fast (deselect with '-m \"not fast\"')",
+ ]
 
 [tool.coverage.html]
 directory = "coverage_report/html"
@@ -119,7 +125,8 @@ exclude_lines = [
   "def run",
   "def terminal.",
   "__author__",
-  "class IElements"]
+  "class IElements"
+ ]
 
 [tool.isort]
 profile = "black"
@@ -154,6 +161,19 @@ exclude = '''
   | profiling
  )/
  '''
+
+[tool.mypy]
+namespace_packages = true
+explicit_package_bases = true
+#ignore_missing_imports = true
+#ignore_errors = false
+#warn_return_any = true
+#warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = "pyautogui.*"
+disable_error_code = "attr-defined"
+disallow_untyped_defs = true
 
 [tool.taskipy.tasks]
 bandit={help='', cmd='poetry run bandit -c pyproject.toml -r .'}
