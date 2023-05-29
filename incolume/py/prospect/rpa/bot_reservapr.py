@@ -173,7 +173,8 @@ def run():
     # print(f"{dir()}")
     # automation1(url="https://portalhashtag.com/login")
     # automation2()
-    automation2(delta={'days': 53})
+    # automation2(delta={'days': 53})
+    automation2(delta={'days': 1})
 
 
 if __name__ == "__main__":
