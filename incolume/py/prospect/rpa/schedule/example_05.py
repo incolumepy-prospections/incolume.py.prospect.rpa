@@ -32,7 +32,7 @@ def task_03():
 @app.task('every 1s')
 def task_04():
     f"""Run {stack()[0][3]}
-    Executa vinculado ao processo/thred principal.
+    Executa vinculado ao processo/thread principal.
     """
     print(f'Ran {stack()[0][3]}.')
 
