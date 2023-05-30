@@ -28,12 +28,11 @@ app = Rocketry()
 
 @app.param('dater')
 def random_date_generator() -> str:
+    """Generate random date."""
     day = 3  # randint(1, 29)
     month = 6  # randint(1, 12)
     year = 2021  # randint(2019, 2021)
-    random_date = date.today().replace(
-        day=day, month=month, year=year
-    )
+    random_date = date(day=day, month=month, year=year)
     formated_date = random_date.strftime('%Y%m%d')
     return formated_date
 
