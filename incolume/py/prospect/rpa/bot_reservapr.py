@@ -149,7 +149,7 @@ def automation(reserve_date: str = '',
 
 def run():
     # automation(hidden=False, delta={'days': 3})
-    automation(reserve_date='03/06/2023')
+    automation(reserve_date='04/06/2023', hidden=False)
 
 
 if __name__ == '__main__':
