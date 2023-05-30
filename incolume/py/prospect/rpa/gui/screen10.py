@@ -21,6 +21,7 @@ def screen10():
         if eventos == 'Login':
             logging.debug(valores)
             break
+    janela.close()
     return valores
 
 
