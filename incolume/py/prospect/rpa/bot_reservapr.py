@@ -5,28 +5,38 @@ from playwright.sync_api import sync_playwright
 from incolume.py.prospect.rpa.gui.screen10 import screen10
 
 
-def automation(date: dt.datetime = None,
-               delta: dict[str: int] = None,
-               date_format: str = '%d%m%Y',
-               url: str = "") -> None:
-    """Automação para agendamento de sala com playwright."""
-    delta = delta or {'weeks': 0, 'days': 1}
-    date = date or dt.datetime.now() + dt.timedelta(**delta)
+def action_web(
+    username: str,
+    password: str,
+    url: str = '',
+    date: dt.datetime = None,
+    delta: dict[str: int] = None,
+    date_format: str = '%d%m%Y',
+    hidden: bool = True
+):
+    """"""
     url = (
         url
         or r"https://intranetsispr2.presidencia.gov.br/reservapr/login.php"
     )
-    info_login = screen10()
-    logging.debug(info_login)
+    if delta is None:
+        delta = {'weeks': 0, 'days': 60}
+    date = date or dt.datetime.now() + dt.timedelta(**delta)
+    logging.debug(f'{username}')
+    logging.debug(f'{url}')
+    logging.debug(f'{date}')
+    logging.debug(f'{delta}')
+    logging.debug(f'{date_format}')
+    logging.debug(f'{hidden}')
     with sync_playwright() as pw_instance:
-        browser = pw_instance.webkit.launch(headless=False, slow_mo=50)
+        browser = pw_instance.webkit.launch(headless=hidden, slow_mo=50)
         page = browser.new_page()
         page.wait_for_timeout(3000)
         page.goto(url)
         page.screenshot(path="capture0.png")
         time.sleep(1)
-        page.fill('xpath=//*[@id="txt_login"]', info_login.get('username'))
-        page.fill('xpath=//*[@id="txt_senha"]', info_login.get('password'))
+        page.fill('xpath=//*[@id="txt_login"]', username)
+        page.fill('xpath=//*[@id="txt_senha"]', password)
         page.screenshot(path="capture1.png")
 
         # Botão login
@@ -96,23 +106,50 @@ def automation(date: dt.datetime = None,
         page.locator('xpath=/html/body/div[1]/section[2]/form/div/div[2]'
                      '/div/div[2]/div[1]/div[1]/div/div[10]'
                      '/div/label/input').click()
+        page.screenshot(path="capture2.png")
 
         # Salvar reserva
         page.locator('xpath=/html/body/div[1]/section[2]'
                      '/form/div/div[3]/button[2]').click()
+        page.screenshot(path="capture3.png")
 
         # Confirmar reserva
         page.fill('xpath=//*[@id="txt_dsc_senha_confirmacao"]',
-                  info_login.get('password'))
+                  password)
         page.locator('xpath=//*[@id="myModalBody"]'
                      '/div/div/div/div/button').click()
 
-        time.sleep(10)
+        # time.sleep(5)
+        page.screenshot(path="capture4.png")
         browser.close()
 
 
+def automation(reserve_date: str = '',
+               delta: dict[str: int] = None,
+               date_format: str = '%d%m%Y',
+               url: str = "",
+               hidden: bool = True) -> None:
+    """Automação para agendamento de sala com playwright."""
+    try:
+        date = dt.datetime.strptime(reserve_date, "%d/%m/%Y")
+    except ValueError:
+        date = None
+    username, password, fix = screen10().values()
+    logging.debug(f'{username=}, {fix=}')
+    action_web(
+        username=username,
+        password=password,
+        url=url,
+        date=date,
+        date_format=date_format,
+        delta=delta,
+        hidden=hidden
+    )
+
+
 def run():
-    automation()
+    # automation(hidden=False, delta={'days': 3})
+    automation(reserve_date='03/06/2023')
 
 
 if __name__ == '__main__':
