@@ -15,6 +15,7 @@ def screen8():
     janela8.title("Authentication")
     janela8.geometry("500x300")
     username, pwd, cbox = None, None, None
+    logging.debug(f"{username=}, {pwd=}, {cbox=}")
 
     def on_click():
         """Run handler events."""

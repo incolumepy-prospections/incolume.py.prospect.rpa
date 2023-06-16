@@ -1,10 +1,10 @@
-import datetime
 import logging
+from inspect import stack
+
+from PySimpleGUI import PySimpleGUI as sg
 from rocketry import Rocketry
 from rocketry.args import Arg
-from rocketry.conds import every, after_success
-from inspect import stack
-from PySimpleGUI import PySimpleGUI as sg
+from rocketry.conds import every
 
 app = Rocketry()
 
@@ -12,29 +12,29 @@ app = Rocketry()
 @app.param()
 def screen():
     # sg.theme('Reddit')
-    sg.theme('DarkBlue')
+    sg.theme("DarkBlue")
     layout = [
-        [sg.Text('usuário'), sg.Input(key='username')],
-        [sg.Text('  senha'), sg.Input(key='password', password_char='*')],
-        [sg.Checkbox('Lembrar usuário', key='fix')],
-        [sg.Button('Login')]
+        [sg.Text("usuário"), sg.Input(key="username")],
+        [sg.Text("  senha"), sg.Input(key="password", password_char="*")],
+        [sg.Checkbox("Lembrar usuário", key="fix")],
+        [sg.Button("Login")],
     ]
     # eventos, valores = None, None
-    janela = sg.Window('Autentication', layout)
+    janela = sg.Window("Autentication", layout)
 
     while 1:
         eventos, valores = janela.read()
         if eventos == sg.WINDOW_CLOSED:
             break
-        if eventos == 'Login':
+        if eventos == "Login":
             logging.debug(valores)
             break
     janela.close()
     return valores
 
 
-@app.task(every('3m'))
-def task_a(info_login=Arg('screen')):
+@app.task(every("3m"))
+def task_a(info_login=Arg("screen")):
     f"""Run {stack()[0][3]}
     Return value.
     """
@@ -42,5 +42,5 @@ def task_a(info_login=Arg('screen')):
     print(username, password, fix)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     app.run()
