@@ -29,25 +29,32 @@ app = Rocketry()
 @app.param('dater')
 def random_date_generator() -> str:
     """Generate random date."""
-    day = 3  # randint(1, 29)
-    month = 6  # randint(1, 12)
-    year = 2021  # randint(2019, 2021)
+    day = randint(1, 29)
+    month = randint(1, 12)
+    year = randint(2019, 2021)
+    # day, month, year = 2, 6, 2021
     random_date = date(day=day, month=month, year=year)
+    logging.debug(random_date)
     formated_date = random_date.strftime('%Y%m%d')
+    logging.debug(formated_date)
     return formated_date
 
 
 @app.param('date')
 def date_today() -> str:
-    date_today = date.today()
-    formated_date = date_today.strftime('%Y%m%d')
+    today = date.today()
+    logging.debug(today)
+    formated_date = today.strftime('%Y%m%d')
+    logging.debug(formated_date)
     return formated_date
 
 
 @app.task('every 5s', name='Pega cotação do dolar')
 def get_dolar(date=Arg('dater')) -> str:
     # def get_dolar(date=Arg('date')) -> str:
+    logging.debug(date)
     response = get(DOLAR.format(date, date)).json()[0]['high']
+    logging.debug(f'{response.status_code=}')
     return response.replace('.', '')[:3]
 
 
