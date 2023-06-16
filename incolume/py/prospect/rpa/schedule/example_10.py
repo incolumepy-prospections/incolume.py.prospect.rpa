@@ -1,24 +1,25 @@
-from rocketry import Rocketry
-from rocketry.conds import every, after_success, after_finish, after_all_finish
+import logging
 from inspect import stack
 from random import randint
-import logging
+
+from rocketry import Rocketry
+from rocketry.conds import after_all_finish, after_success, every
 
 app = Rocketry()
 handler = logging.StreamHandler()
 handler.setLevel(logging.DEBUG)
-task_logger = logging.getLogger('rocketry.task')
+task_logger = logging.getLogger("rocketry.task")
 task_logger.addHandler(handler)
 
 
-@app.task(every('3s'))
+@app.task(every("3s"))
 def task_01():
     f"""Run {stack()[0][3]}
     Controlar fluxo de tarefas.
     """
     if randint(0, 1):
-        raise SyntaxError('Quebrou!')
-    print(f'Ran {stack()[0][3]}.')
+        raise SyntaxError("Quebrou!")
+    print(f"Ran {stack()[0][3]}.")
 
 
 @app.task(after_success(task_01))
@@ -26,7 +27,7 @@ def task_02():
     f"""Run {stack()[0][3]}
     Executa após sucesso da task_01.
     """
-    print(f'Ran {stack()[0][3]}: task_01 ran with success.')
+    print(f"Ran {stack()[0][3]}: task_01 ran with success.")
 
 
 @app.task(after_all_finish(task_01, task_02))
@@ -34,8 +35,8 @@ def task_03():
     f"""Run {stack()[0][3]}
     Executa ao final do fluxo.
     """
-    print(f'Ran {stack()[0][3]}: fluxo finished.')
+    print(f"Ran {stack()[0][3]}: fluxo finished.")
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     app.run()

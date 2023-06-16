@@ -1,12 +1,13 @@
 import asyncio
 from inspect import stack
+
 from rocketry import Rocketry
 from rocketry.conds import every
 
 app = Rocketry(execution="async")
 
 
-@app.task(every('1m'))
+@app.task(every("1m"))
 async def do_things():
     f"""Run {stack()[0][3]}"""
     print(stack()[0][3])

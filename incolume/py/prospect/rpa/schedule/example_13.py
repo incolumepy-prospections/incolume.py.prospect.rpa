@@ -1,20 +1,19 @@
 import datetime
+from inspect import stack
 
 from rocketry import Rocketry
 from rocketry.args import Arg
-from rocketry.conds import every, after_success
-from inspect import stack
-from random import randint
+from rocketry.conds import every
 
 app = Rocketry()
 
 
 @app.param()
 def epoch():
-    return datetime.datetime.utcnow().strftime('%s')
+    return datetime.datetime.utcnow().strftime("%s")
 
 
-@app.task(every('3s'))
+@app.task(every("3s"))
 def task_a(value=Arg(epoch)):
     f"""Run {stack()[0][3]}
     Return value.
@@ -22,5 +21,5 @@ def task_a(value=Arg(epoch)):
     print(value)
 
 
-if __name__ == '__main__':  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     app.run()
