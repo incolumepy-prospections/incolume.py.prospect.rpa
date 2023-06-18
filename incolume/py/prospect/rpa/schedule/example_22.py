@@ -35,7 +35,8 @@ def screen():
 
 @app.task(daily.at("11:02"), execution="process")
 def task_a(info_login=Return("screen")):
-    f"""Run {stack()[0][3]}
+    """Run it.
+
     Return value.
     """
     username, password, fix = info_login.values()

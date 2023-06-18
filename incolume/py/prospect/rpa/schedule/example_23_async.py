@@ -9,7 +9,7 @@ app = Rocketry(execution="async")
 
 @app.task(every("1m"))
 async def do_things():
-    f"""Run {stack()[0][3]}"""
+    """Run it"""
     print(stack()[0][3])
 
 

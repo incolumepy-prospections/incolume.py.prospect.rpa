@@ -1,3 +1,5 @@
+"""Examples."""
+
 import asyncio
 import logging
 from inspect import stack
@@ -12,6 +14,7 @@ app = Rocketry()
 
 @app.param()
 async def screen():
+    """Run screen."""
     # sg.theme('Reddit')
     sg.theme("DarkBlue")
     layout = [
@@ -36,7 +39,8 @@ async def screen():
 
 @app.task(every("3m"), execution="async")
 def task_a(info_login=Arg("screen")):
-    f"""Run {stack()[0][3]}
+    """Run it.
+
     Return value.
     """
     username, password, fix = info_login.values()
@@ -44,7 +48,7 @@ def task_a(info_login=Arg("screen")):
 
 
 async def main():
-    """Launch Rocketry app (and possibly something else)"""
+    """Launch Rocketry app (and possibly something else)."""
     rocketry_task = asyncio.create_task(app.serve())
     # Start possibly other async apps
     await rocketry_task

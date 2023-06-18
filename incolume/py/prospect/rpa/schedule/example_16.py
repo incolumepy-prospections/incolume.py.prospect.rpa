@@ -12,7 +12,7 @@ app.params(**screen10())
 
 @app.task(every("3m"))
 def task_a(username=Arg("username"), password=Arg("password")):
-    f"""Run {stack()[0][3]}
+    """Run {stack()[0][3]}
     Return value.
     """
     print(username, password)

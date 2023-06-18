@@ -36,7 +36,8 @@ async def screen():
 
 @app.task(every("30s"))
 async def do_things(info=Return("screen")):
-    f"""Run {stack()[0][3]}"""
+    """Run it."""
+
     print(f"{stack()[0][3]}: {info}")
 
 

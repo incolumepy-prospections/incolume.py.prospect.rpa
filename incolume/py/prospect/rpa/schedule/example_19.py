@@ -1,3 +1,4 @@
+"""Examples."""
 import logging
 from inspect import stack
 
@@ -35,7 +36,7 @@ def screen():
 
 @app.task(every("3m"))
 def task_a(info_login=Arg("screen")):
-    f"""Run {stack()[0][3]}
+    """Run {stack()[0][3]}
     Return value.
     """
     username, password, fix = info_login.values()

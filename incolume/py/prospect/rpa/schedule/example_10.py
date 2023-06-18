@@ -14,7 +14,7 @@ task_logger.addHandler(handler)
 
 @app.task(every("3s"))
 def task_01():
-    f"""Run {stack()[0][3]}
+    """Run {stack()[0][3]}
     Controlar fluxo de tarefas.
     """
     if randint(0, 1):
@@ -24,7 +24,7 @@ def task_01():
 
 @app.task(after_success(task_01))
 def task_02():
-    f"""Run {stack()[0][3]}
+    """Run {stack()[0][3]}
     Executa após sucesso da task_01.
     """
     print(f"Ran {stack()[0][3]}: task_01 ran with success.")
@@ -32,7 +32,7 @@ def task_02():
 
 @app.task(after_all_finish(task_01, task_02))
 def task_03():
-    f"""Run {stack()[0][3]}
+    """Run {stack()[0][3]}
     Executa ao final do fluxo.
     """
     print(f"Ran {stack()[0][3]}: fluxo finished.")
