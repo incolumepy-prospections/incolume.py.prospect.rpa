@@ -38,11 +38,12 @@ async def screen():
 
 
 @app.task(every("3m"), execution="async")
-def task_a(info_login=Arg("screen")):
+def task_a(info_login: dict = Arg("screen")):
     """Run it.
 
     Return value.
     """
+    logging.debug(stack()[0][3])
     username, password, fix = info_login.values()
     print(username, password, fix)
 

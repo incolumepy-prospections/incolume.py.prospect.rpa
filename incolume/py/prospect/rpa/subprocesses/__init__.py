@@ -1,3 +1,2 @@
-# !/usr/bin/env python
-# -*- coding: utf-8 -*-
+"""Submodule subprocesses."""
 __author__ = "@britodfbr"  # pragma: no cover
