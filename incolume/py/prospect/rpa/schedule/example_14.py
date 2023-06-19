@@ -1,3 +1,5 @@
+"""Examples."""
+import logging
 from inspect import stack
 
 from rocketry import Rocketry
@@ -11,9 +13,11 @@ app = Rocketry()
 
 @app.task(every("1d"))
 def task_a(value=FuncArg(screen8)):
-    f"""Run {stack()[0][3]}
+    """Run it.
+
     Return value.
     """
+    logging.debug(stack()[0][3])
     print(value)
 
 

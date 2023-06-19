@@ -1,3 +1,4 @@
+"""Examples."""
 import logging
 from inspect import stack
 
@@ -11,6 +12,7 @@ app = Rocketry()
 
 @app.task(every("1d"))
 def screen():
+    """Run screen."""
     # sg.theme('Reddit')
     sg.theme("DarkBlue")
     layout = [
@@ -34,10 +36,12 @@ def screen():
 
 
 @app.task(daily.at("11:02"), execution="process")
-def task_a(info_login=Return("screen")):
-    f"""Run {stack()[0][3]}
+def task_a(info_login: dict = Return("screen")):
+    """Run it.
+
     Return value.
     """
+    logging.debug(stack()[0][3])
     username, password, fix = info_login.values()
     print(username, password, fix)
 

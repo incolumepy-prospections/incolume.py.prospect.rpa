@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 from inspect import stack
 from random import randint
 
@@ -10,7 +11,8 @@ app = Rocketry()
 
 @app.task(every("3s"))
 def task_a():
-    f"""Run {stack()[0][3]}
+    """Run it.
+
     Return value.
     """
     return randint(1, 10)
@@ -18,7 +20,8 @@ def task_a():
 
 @app.task(every("1s"))
 def task_b():
-    f"""Run {stack()[0][3]}
+    """Run it.
+
     Return value.
     """
     return randint(1, 10)
@@ -26,7 +29,8 @@ def task_b():
 
 @app.task(after_success(task_b))
 def task_02(tres=Return(task_a), todo=Return(task_b)):
-    f"""Run {stack()[0][3]}
+    """Run it.
+
     Recebe o parametro da task_01.
     """
     print(f"Ran {stack()[0][3]}: {tres=} {todo=}")

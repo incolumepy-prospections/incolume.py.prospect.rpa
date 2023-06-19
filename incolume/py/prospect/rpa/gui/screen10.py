@@ -1,9 +1,11 @@
+"""Modulo de Tratativa."""
 import logging
 
 from PySimpleGUI import PySimpleGUI as sg
 
 
 def screen10():
+    """Run screen10."""
     sg.theme("Reddit")
     # sg.theme('DarkBlue')
     layout = [

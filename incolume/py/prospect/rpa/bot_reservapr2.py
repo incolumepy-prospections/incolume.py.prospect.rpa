@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 import datetime as dt
 import logging
 import time
@@ -13,6 +14,7 @@ scheduling = Rocketry()
 
 @scheduling.param("info_login")
 def screen():
+    """Run screen."""
     sg.theme("Reddit")
     # sg.theme('DarkBlue')
     layout = [
@@ -209,6 +211,7 @@ def automation(
 
 
 def run():
+    """Run module."""
     # automation(hidden=False, delta={'days': 3})
     automation(reserve_date="04/06/2023", hidden=False)
 

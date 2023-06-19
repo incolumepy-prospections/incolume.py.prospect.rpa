@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 from PySimpleGUI import PySimpleGUI as sg
 
 sg.theme("Reddit")

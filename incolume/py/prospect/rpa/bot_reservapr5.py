@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 import asyncio
 import datetime as dt
 import logging
@@ -13,6 +14,7 @@ scheduling = Rocketry()
 
 @scheduling.param()
 async def screen():
+    """Run screen."""
     sg.theme("Reddit")
     # sg.theme('DarkBlue')
     layout = [
@@ -44,7 +46,7 @@ async def action_web(
     date_format: str = "%d%m%Y",
     hidden: bool = True,
 ):
-    """"""
+    """Run action_web."""
     url = (
         url or r"https://intranetsispr2.presidencia.gov.br/reservapr/login.php"
     )
@@ -210,6 +212,7 @@ async def automation(
 
 
 def run():
+    """Run module."""
     # automation(hidden=False, delta={'days': 3})
     asyncio.run(automation(reserve_date="04/06/2023", hidden=False))
 

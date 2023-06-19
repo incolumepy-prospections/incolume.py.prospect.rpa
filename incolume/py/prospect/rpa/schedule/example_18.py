@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 from rocketry import Rocketry
 from rocketry.args import Arg, CliArg, EnvArg, FuncArg
 
@@ -5,12 +6,13 @@ app = Rocketry()
 
 
 def get_value():
+    """Return hello world."""
     return "Hello World"
 
 
 @app.param("my_param")
 def get_session_param():
-    "Session level parameter (named as 'my_param')"
+    """Session level parameter (named as 'my_param')."""
     return "Hello Python"
 
 
@@ -21,6 +23,7 @@ def do_with_param(
     arg3=EnvArg("ENV_VARIABLE"),
     arg4=CliArg("--cli_arg"),
 ):
+    """Run it."""
     print(arg1, arg2, arg3, arg4)
 
 

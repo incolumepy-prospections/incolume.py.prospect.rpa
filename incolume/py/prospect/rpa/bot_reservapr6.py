@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 import datetime as dt
 import logging
 import os
@@ -21,7 +22,7 @@ def action_web(
     date_format: str = "%d%m%Y",
     hidden: bool = True,
 ):
-    """"""
+    """Run action_web."""
     url = (
         url or r"https://intranetsispr2.presidencia.gov.br/reservapr/login.php"
     )
@@ -185,6 +186,7 @@ def automation(
 
 
 def run():
+    """Run module."""
     # automation(hidden=False, delta={'days': 3})
     automation(reserve_date="04/06/2023", hidden=False)
 
