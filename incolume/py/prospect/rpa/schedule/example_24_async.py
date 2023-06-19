@@ -1,3 +1,4 @@
+"""Modulo de Tratativa."""
 import asyncio
 import logging
 from inspect import stack
@@ -12,6 +13,7 @@ app = Rocketry(execution="async")
 
 @app.param()
 async def screen():
+    """Run screen."""
     # sg.theme('Reddit')
     sg.theme("DarkBlue")
     layout = [
@@ -37,12 +39,11 @@ async def screen():
 @app.task(every("30s"))
 async def do_things(info=Return("screen")):
     """Run it."""
-
     print(f"{stack()[0][3]}: {info}")
 
 
 async def main():
-    """Launch Rocketry app (and possibly something else)"""
+    """Launch Rocketry app (and possibly something else)."""
     rocketry_task = asyncio.create_task(app.serve())
     # Start possibly other async apps
     await rocketry_task

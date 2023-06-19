@@ -14,6 +14,7 @@ app = Rocketry()
 @app.task(every("1d"))
 def task_a(value=FuncArg(screen8)):
     """Run it.
+
     Return value.
     """
     logging.debug(stack()[0][3])
