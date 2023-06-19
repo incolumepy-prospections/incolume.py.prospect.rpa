@@ -46,7 +46,7 @@ def action_web(
     date_format: str = "%d%m%Y",
     hidden: bool = True,
 ):
-    """"""
+    """Run action_web."""
     url = (
         url or r"https://intranetsispr2.presidencia.gov.br/reservapr/login.php"
     )

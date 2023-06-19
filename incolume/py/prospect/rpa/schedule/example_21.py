@@ -36,8 +36,9 @@ def screen():
 
 
 @app.task(daily.at("10:43"), execution="process")
-def task_a(info_login=Arg("screen")):
+def task_a(info_login: dict = Arg("screen")):
     """Run it.
+
     Return value.
     """
     logging.debug(stack()[0][3])
