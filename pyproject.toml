@@ -187,7 +187,7 @@ lint_isort={help='Checking with isort', cmd='echo --isort--; poetry run isort --
 lint_mypy={help='Checking with mypy', cmd='echo --mypy--; poetry run mypy --check incolume tests'}
 lint_pydocstyle={help='Checking with pydocstyle', cmd='echo --pydocstyle--; poetry run pydocstyle incolume/ tests/'}
 lint_pylint={help='Checking with pylint', cmd='echo --pylint--; poetry run pylint incolume/ tests/'}
-pre_lint="task lint_black && task lint_isort && task lint_flake8 && task lint_mypy && task lint_pydocstyle && task lint_pylint"
+pre_lint="task lint_black && task lint_isort && task lint_flake8 && task lint_pydocstyle && task lint_pylint && task lint_mypy"
 lint={help='Checking all linters configurated', cmd=''}
 prerelease={cmd='v=$(poetry version prerelease) && poetry run pytest && git ci -m "$v" pyproject.toml coverage_report $(find incolume* -name version.txt)', help='poetry version prerelease'}
 # pre_patch="poetry run task bandit && poetry run task lint"
