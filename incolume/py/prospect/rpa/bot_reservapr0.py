@@ -24,12 +24,12 @@ def action_web(
     if delta is None:
         delta = {"weeks": 0, "days": 60}
     date = date or dt.datetime.now() + dt.timedelta(**delta)
-    logging.debug(f"{username}")
-    logging.debug(f"{url}")
-    logging.debug(f"{date}")
-    logging.debug(f"{delta}")
-    logging.debug(f"{date_format}")
-    logging.debug(f"{hidden}")
+    logging.debug(username)
+    logging.debug(url)
+    logging.debug(date)
+    logging.debug(delta)
+    logging.debug(date_format)
+    logging.debug(hidden)
     with sync_playwright() as pw_instance:
         browser = pw_instance.webkit.launch(headless=hidden, slow_mo=50)
         page = browser.new_page()
