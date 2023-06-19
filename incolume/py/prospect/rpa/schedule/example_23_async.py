@@ -1,3 +1,4 @@
+"""Example."""
 import asyncio
 from inspect import stack
 
@@ -9,12 +10,12 @@ app = Rocketry(execution="async")
 
 @app.task(every("1m"))
 async def do_things():
-    """Run it"""
+    """Run it."""
     print(stack()[0][3])
 
 
 async def main():
-    """Launch Rocketry app (and possibly something else)"""
+    """Launch Rocketry app (and possibly something else)."""
     rocketry_task = asyncio.create_task(app.serve())
     # Start possibly other async apps
     await rocketry_task

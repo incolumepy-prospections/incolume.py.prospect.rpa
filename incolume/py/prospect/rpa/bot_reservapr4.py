@@ -1,3 +1,4 @@
+"""Run it."""
 import datetime as dt
 import logging
 import time
@@ -13,6 +14,7 @@ scheduling = Rocketry()
 
 @scheduling.task(every("1d"))
 def screen():
+    """Run it."""
     sg.theme("Reddit")
     # sg.theme('DarkBlue')
     layout = [
@@ -44,6 +46,7 @@ def action_web(
     date_format: str = "%d%m%Y",
     hidden: bool = True,
 ):
+    """Run it."""
     """"""
     url = (
         url or r"https://intranetsispr2.presidencia.gov.br/reservapr/login.php"
@@ -209,6 +212,7 @@ def automation(
 
 
 def run():
+    """Run it."""
     # automation(hidden=False, delta={'days': 3})
     automation(reserve_date="04/06/2023", hidden=False)
 

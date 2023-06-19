@@ -18,7 +18,8 @@ def epoch():
 
 @app.task(every("3s"))
 def task_a(value=Arg(epoch)):
-    """Run {stack()[0][3]}
+    """Run it.
+
     Return value.
     """
     logging.debug(stack()[0][3])
